@@ -23,6 +23,11 @@ body,
 
 body {
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.dark body {
   background-color: #020617;
   color: #e2e8f0;
 }

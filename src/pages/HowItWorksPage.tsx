@@ -90,8 +90,8 @@ export function HowItWorksPage(): JSX.Element {
               and is not written to Redis or files.
             </p>
             <p className="pt-1 text-slatewarm dark:text-slate-400">
-              <strong>Note:</strong> To use paid models, your OpenRouter account must have
-              sufficient credits in its balance.
+              <strong>*Note: To use paid models, your OpenRouter account must have
+                sufficient credits in its balance. </strong>
             </p>
           </div>
         </article>

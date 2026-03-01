@@ -13,7 +13,7 @@ export default function App(): JSX.Element {
   const { theme, toggle } = useTheme();
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950 bg-grain text-slate-100 dark:bg-slate-950 dark:bg-grain-dark dark:text-slate-100">
+    <div className="flex min-h-screen flex-col bg-slate-50 bg-grain text-ink dark:bg-slate-950 dark:bg-grain-dark dark:text-slate-100">
       {/* Dot grid overlay in dark mode */}
       <div className="pointer-events-none fixed inset-0 bg-dots opacity-0 dark:opacity-100" />
 
