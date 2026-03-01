@@ -11,6 +11,8 @@ const BURNING_QUESTIONS = [
   // Serious & thought-provoking
   "What is the most likely impact of AI-native education in the next 5 years?",
   "Will open-source AI models surpass proprietary ones by 2030?",
+  "Is a sandwich defined by its bread or its filling? Where does a wrap fit in?",
+  "Would aliens be more disappointed in our technology or our pizza toppings debate?",
   "Is consciousness possible in large language models, or is it forever out of reach?",
   "Should AI systems be granted legal personhood if they pass certain benchmarks?",
   "What is the biggest unsolved problem in computer science that AI could crack first?",
@@ -25,10 +27,7 @@ const BURNING_QUESTIONS = [
   "Is cereal a soup? Settle this once and for all.",
   "If animals could file lawsuits, which species sues humanity first?",
   "Would you rather fight one horse-sized duck or a hundred duck-sized horses?",
-  "If the Internet had a final boss, what would it be?",
-  "Is a sandwich defined by its bread or its filling? Where does a wrap fit in?",
-  "If time travel exists, why hasn't anyone come back to fix Twitter?",
-  "Would aliens be more disappointed in our technology or our pizza toppings debate?",
+  "If the Internet had a final boss, what would it be?"
 ];
 
 /**
@@ -418,8 +417,8 @@ function ModePill({
       type="button"
       onClick={onClick}
       className={`rounded-lg px-4 py-2 font-sans text-sm font-medium transition-all ${active
-          ? "bg-ember text-white shadow-glow-sm"
-          : "border border-slate-200 bg-white text-slatewarm hover:border-ember/30 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-ember/30"
+        ? "bg-ember text-white shadow-glow-sm"
+        : "border border-slate-200 bg-white text-slatewarm hover:border-ember/30 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-400 dark:hover:border-ember/30"
         }`}
     >
       {label}
