@@ -8,6 +8,7 @@ import { useSessionStore } from "../stores/session";
 import type { AuthMode } from "../types";
 
 const BURNING_QUESTIONS = [
+  // Serious & thought-provoking
   "What is the most likely impact of AI-native education in the next 5 years?",
   "Will open-source AI models surpass proprietary ones by 2030?",
   "Is consciousness possible in large language models, or is it forever out of reach?",
@@ -18,6 +19,16 @@ const BURNING_QUESTIONS = [
   "What would a post-scarcity economy actually look like in practice?",
   "Can AI-generated art ever be considered truly creative?",
   "What is the single most important thing humanity should focus on right now?",
+  "If AI models could dream, what would they have nightmares about?",
+  "Would a hotdog in a bun technically qualify as a taco? Defend your position.",
+  "If you could delete one invention from history, which one causes the most chaos?",
+  "Is cereal a soup? Settle this once and for all.",
+  "If animals could file lawsuits, which species sues humanity first?",
+  "Would you rather fight one horse-sized duck or a hundred duck-sized horses?",
+  "If the Internet had a final boss, what would it be?",
+  "Is a sandwich defined by its bread or its filling? Where does a wrap fit in?",
+  "If time travel exists, why hasn't anyone come back to fix Twitter?",
+  "Would aliens be more disappointed in our technology or our pizza toppings debate?",
 ];
 
 /**
