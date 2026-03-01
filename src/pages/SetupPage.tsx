@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ModelCard } from "../components/ModelCard";
+import { useTypewriter } from "../hooks/useTypewriter";
 import { fetchByokModels, fetchSystemModels, startRoundtable } from "../lib/api";
 import { useSessionStore } from "../stores/session";
 import type { AuthMode } from "../types";
@@ -41,16 +42,7 @@ export function SetupPage(): JSX.Element {
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [modelFilter, setModelFilter] = useState("");
-  const [placeholderIdx, setPlaceholderIdx] = useState(
-    () => Math.floor(Math.random() * BURNING_QUESTIONS.length)
-  );
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setPlaceholderIdx((prev) => (prev + 1) % BURNING_QUESTIONS.length);
-    }, 5000);
-    return () => clearInterval(id);
-  }, []);
+  const typedPlaceholder = useTypewriter(BURNING_QUESTIONS);
 
   const canStart = useMemo(
     () =>
@@ -174,13 +166,21 @@ export function SetupPage(): JSX.Element {
               {question.trim().length}/2000
             </span>
           </div>
-          <textarea
-            className="min-h-28 rounded-xl border border-slate-200 bg-white/80 px-4 py-3 font-serif text-base text-ink placeholder-slate-400 transition-colors focus:border-ember focus:outline-none dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-ember"
-            value={question}
-            onChange={(event) => setConfig({ question: event.target.value })}
-            placeholder={BURNING_QUESTIONS[placeholderIdx]}
-            maxLength={2000}
-          />
+          <div className="relative">
+            <textarea
+              className="relative z-10 min-h-28 w-full rounded-xl border border-slate-200 bg-white/80 px-4 py-3 font-serif text-base text-ink transition-colors focus:border-ember focus:outline-none dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-100 dark:focus:border-ember"
+              value={question}
+              onChange={(event) => setConfig({ question: event.target.value })}
+              maxLength={2000}
+              style={{ background: question ? undefined : "transparent" }}
+            />
+            {!question && (
+              <div className="pointer-events-none absolute inset-0 px-4 py-3 font-serif text-base text-slate-400 dark:text-slate-500">
+                {typedPlaceholder}
+                <span className="ml-0.5 inline-block w-[2px] animate-blink bg-slate-400 dark:bg-slate-500">&nbsp;</span>
+              </div>
+            )}
+          </div>
         </label>
       </section>
 
