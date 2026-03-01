@@ -15,17 +15,17 @@ export function ThemeToggle({
     <button
       type="button"
       onClick={onToggle}
-      className="group relative flex h-8 w-16 items-center rounded-full border border-slate-300 bg-slate-100 p-1 transition-all dark:border-slate-600 dark:bg-slate-800"
+      className="group relative flex h-7 w-12 shrink-0 items-center rounded-full border border-slate-300 bg-slate-100 p-1 transition-all sm:h-8 sm:w-16 dark:border-slate-600 dark:bg-slate-800"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <span
-        className={`flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm transition-all duration-300 dark:bg-slate-600 ${
-          isDark ? "translate-x-8" : "translate-x-0"
+        className={`flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm transition-all duration-300 sm:h-6 sm:w-6 dark:bg-slate-600 ${
+          isDark ? "translate-x-5 sm:translate-x-8" : "translate-x-0"
         }`}
       >
         {isDark ? (
           <svg
-            className="h-3.5 w-3.5 text-amber-300"
+            className="h-3 w-3 text-amber-300 sm:h-3.5 sm:w-3.5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -37,7 +37,7 @@ export function ThemeToggle({
           </svg>
         ) : (
           <svg
-            className="h-3.5 w-3.5 text-amber-500"
+            className="h-3 w-3 text-amber-500 sm:h-3.5 sm:w-3.5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

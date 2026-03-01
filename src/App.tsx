@@ -20,12 +20,12 @@ export default function App(): JSX.Element {
       <nav className="glass sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           {/* Brand */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-ember font-mono text-xs font-bold text-white shadow-glow-sm">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-ember font-mono text-[10px] font-bold text-white shadow-glow-sm sm:h-8 sm:w-8 sm:text-xs">
               SR
             </div>
             <div className="flex flex-col">
-              <span className="font-sans text-sm font-bold uppercase tracking-[0.14em] text-ink dark:text-slate-100">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.14em] text-ink dark:text-slate-100 sm:text-sm">
                 Sentient Roundtable
               </span>
               <span className="hidden font-mono text-[9px] text-slatewarm dark:text-slate-500 sm:block">
@@ -35,16 +35,16 @@ export default function App(): JSX.Element {
           </Link>
 
           {/* Nav actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <Link
               to="/"
-              className="font-sans text-sm font-medium text-slatewarm transition-colors hover:text-ember dark:text-slate-400 dark:hover:text-ember"
+              className="font-sans text-xs font-medium text-slatewarm transition-colors hover:text-ember dark:text-slate-400 dark:hover:text-ember sm:text-sm"
             >
               Ask US
             </Link>
             <Link
               to="/how-it-works"
-              className="font-sans text-sm font-medium text-slatewarm transition-colors hover:text-ember dark:text-slate-400 dark:hover:text-ember"
+              className="font-sans text-xs font-medium text-slatewarm transition-colors hover:text-ember dark:text-slate-400 dark:hover:text-ember sm:text-sm"
             >
               How It Works
             </Link>
