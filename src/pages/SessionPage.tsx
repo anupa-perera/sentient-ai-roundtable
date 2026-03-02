@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ChatMessage } from "../components/ChatMessage";
@@ -201,12 +201,12 @@ export function SessionPage(): JSX.Element {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              {activeSpeaker && phase === "running" && (
-                <span className="flex items-center gap-1.5 rounded-full bg-ember/10 px-2.5 py-1 font-mono text-[10px] font-medium text-ember">
-                  <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-ember" />
-                  {getModelShortName(activeSpeaker)} speaking
-                </span>
-              )}
+              {phase === "running" &&
+                (liveTokenModel && liveTokenBuffer ? (
+                  <GeneratingIndicator model={liveTokenModel} />
+                ) : activeSpeaker ? (
+                  <SpeakingIndicator model={activeSpeaker} />
+                ) : null)}
               <StatusBadge phase={phase} round={currentRound} />
             </div>
           </div>
@@ -343,7 +343,8 @@ export function SessionPage(): JSX.Element {
         </aside>
       </section>
 
-      {/* Final Findings */}
+      {/* Final Findings — only shown once findings are available */}
+      {findings && (
       <section className="glass mt-5 animate-fade-in rounded-2xl p-5 shadow-panel dark:shadow-panel-dark">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2 className="flex items-center gap-2 font-sans text-lg font-bold text-ink dark:text-white">
@@ -368,17 +369,10 @@ export function SessionPage(): JSX.Element {
           </button>
         </div>
         <div className="rounded-xl border border-slate-200/50 p-4 dark:border-slate-700/30">
-          {findings ? (
-            <MarkdownProse content={findings} />
-          ) : (
-            <div className="flex flex-col items-center py-8">
-              <p className="font-sans text-sm text-slate-400 dark:text-slate-500">
-                Findings will appear after all rounds, voting, and synthesis complete.
-              </p>
-            </div>
-          )}
+          <MarkdownProse content={findings} />
         </div>
       </section>
+      )}
     </main>
   );
 }
@@ -527,5 +521,44 @@ function StatusBadge({ phase, round }: { phase: string; round: number }): JSX.El
         {phase}{round > 0 ? ` / R${round}` : ""}
       </span>
     </div>
+  );
+}
+
+/**
+ * Shared pulsing indicator badge for live model status.
+ */
+function PulseBadge({
+  model,
+  label,
+  bordered,
+  children
+}: {
+  model: string;
+  label: string;
+  bordered?: boolean;
+  children?: ReactNode;
+}): JSX.Element {
+  return (
+    <span className={`flex items-center gap-1.5 rounded-full bg-ember/10 px-2.5 py-1 font-mono text-[10px] font-medium text-ember ${bordered ? "border border-ember/40" : ""}`}>
+      <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-ember" />
+      {getModelShortName(model)} {label}
+      {children}
+    </span>
+  );
+}
+
+function SpeakingIndicator({ model }: { model: string }): JSX.Element {
+  return <PulseBadge model={model} label="thinking" />;
+}
+
+function GeneratingIndicator({ model }: { model: string }): JSX.Element {
+  return (
+    <PulseBadge model={model} label="is typing" bordered>
+      <span className="inline-flex items-center">
+        <span className="animate-pulse">.</span>
+        <span className="animate-pulse delay-150">.</span>
+        <span className="animate-pulse delay-300">.</span>
+      </span>
+    </PulseBadge>
   );
 }
