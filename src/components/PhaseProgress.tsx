@@ -24,8 +24,8 @@ export function PhaseProgress({ currentPhase }: { currentPhase: Phase }): JSX.El
   return (
     <div className="flex w-full items-center justify-between gap-1">
       {STEPS.map((step, index) => {
-        const isCompleted = index < activeIndex;
-        const isActive = index === activeIndex;
+        const isCompleted = index < activeIndex || (currentPhase === "complete" && index === activeIndex);
+        const isActive = index === activeIndex && !isCompleted;
         const isPending = index > activeIndex;
 
         return (
