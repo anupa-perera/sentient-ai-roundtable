@@ -352,7 +352,8 @@ export function SetupPage(): JSX.Element {
         </div>
       </section>
 
-      {/* Host model */}
+      {/* Host model — appears once at least one panelist is selected */}
+      {selectedModels.length > 0 && (
       <section className="glass mb-5 animate-fade-in rounded-2xl p-5 shadow-panel delay-225 dark:shadow-panel-dark">
         <label className="flex flex-col gap-2">
           <span className="font-sans text-sm font-semibold text-ink dark:text-slate-200">
@@ -375,6 +376,7 @@ export function SetupPage(): JSX.Element {
           </select>
         </label>
       </section>
+      )}
 
       {/* Error */}
       {formError && (

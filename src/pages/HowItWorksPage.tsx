@@ -83,7 +83,7 @@ export function HowItWorksPage(): JSX.Element {
               </a>
               .
             </p>
-            <p>2. Open the Keys page and generate a new API key.</p>
+            <p>2. Go to settings and API Keys tab and generate a new API key.</p>
             <p>3. Copy the key once, then switch Setup to BYOK and paste it into the key field.</p>
             <p>
               4. Start the session. The key is kept only in backend memory for the active session
