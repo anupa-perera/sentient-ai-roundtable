@@ -313,9 +313,12 @@ export function SessionPage(): JSX.Element {
             </h3>
             <div className="max-h-72 space-y-4 overflow-auto">
               {votes.map((voteSet) => (
-                <article key={voteSet.voter} className="animate-fade-in">
-                  <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-slatewarm dark:text-slate-400">
-                    Voter: {getModelShortName(voteSet.voter)}
+                <article
+                  key={voteSet.voter}
+                  className="animate-fade-in rounded-xl border border-slate-200/50 p-3 dark:border-slate-700/30"
+                >
+                  <p className="mb-3 border-b border-slate-200/50 pb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-ember dark:border-slate-700/30">
+                    {getModelShortName(voteSet.voter)}
                   </p>
                   <div className="space-y-3">
                     {voteSet.votes.map((vote) => (
@@ -333,13 +336,13 @@ export function SessionPage(): JSX.Element {
               {voteAbstains.map((abstain) => (
                 <article
                   key={abstain.voter}
-                  className="animate-fade-in rounded-xl border border-amber-200/50 bg-amber-50/40 p-3 dark:border-amber-800/20 dark:bg-amber-900/10"
+                  className="animate-fade-in rounded-xl border border-slate-200/50 p-3 dark:border-slate-700/30"
                 >
-                  <p className="mb-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-500">
-                    Voter: {getModelShortName(abstain.voter)}
+                  <p className="mb-3 border-b border-slate-200/50 pb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-ember dark:border-slate-700/30">
+                    {getModelShortName(abstain.voter)}
                   </p>
-                  <p className="font-sans text-xs text-amber-900 dark:text-amber-300/90">
-                    Abstained: invalid vote payload.
+                  <p className="italic font-serif text-xs text-amber-600 dark:text-amber-400">
+                    Abstained — could not produce a valid vote this round.
                   </p>
                 </article>
               ))}
