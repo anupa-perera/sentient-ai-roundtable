@@ -168,7 +168,7 @@ export function SetupPage(): JSX.Element {
         <label className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <span className="font-sans text-sm font-semibold text-ink dark:text-slate-200">
-              Tell Us About Your Burning Question
+              Ask Us About Your Burning Question
             </span>
             <span className="font-mono text-[10px] text-slate-400">
               {question.trim().length}/2000
