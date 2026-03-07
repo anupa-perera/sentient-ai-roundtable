@@ -17,17 +17,17 @@ export function HowItWorksPage(): JSX.Element {
         </p>
       </header>
 
-      <section className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <section className="grid grid-cols-1 gap-5">
         <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel dark:shadow-panel-dark">
-          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">1. Setup</h2>
+          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">Setup</h2>
           <p className="font-serif text-sm leading-relaxed text-slatewarm dark:text-slate-400">
-            Enter a clear burning question, select 2-8 panel models, choose a host, and set the
-            number of rounds (1-10). The system runs exactly the rounds you choose.
+            Enter a clear burning question, set the
+            number of rounds (1 - 10). Select 2-8 panel models & choose a host model out of the selected panel. Then click on Launch roundtable.
           </p>
         </article>
 
         <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel delay-75 dark:shadow-panel-dark">
-          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">2. Access Modes</h2>
+          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">Access Modes</h2>
           <p className="font-serif text-sm leading-relaxed text-slatewarm dark:text-slate-400">
             Use <strong>System (free)</strong> for free models only, or switch to <strong>BYOK</strong>{" "}
             to test paid models using your own OpenRouter key. BYOK keys are session-only and not
@@ -37,7 +37,7 @@ export function HowItWorksPage(): JSX.Element {
 
         <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel delay-150 dark:shadow-panel-dark">
           <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">
-            3. Live Discussion
+            Live Discussion
           </h2>
           <p className="font-serif text-sm leading-relaxed text-slatewarm dark:text-slate-400">
             During each round, models speak sequentially. You see token-level streaming in real
@@ -48,7 +48,7 @@ export function HowItWorksPage(): JSX.Element {
 
         <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel delay-225 dark:shadow-panel-dark">
           <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">
-            4. Voting and Synthesis
+            Voting and Synthesis
           </h2>
           <p className="font-serif text-sm leading-relaxed text-slatewarm dark:text-slate-400">
             After all rounds complete, each panel model scores peer factual accuracy. The host then
@@ -56,10 +56,10 @@ export function HowItWorksPage(): JSX.Element {
           </p>
         </article>
 
-        <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel delay-300 md:col-span-2 dark:shadow-panel-dark">
-          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">5. Export</h2>
+        <article className="glass animate-fade-in rounded-2xl p-5 shadow-panel delay-300 dark:shadow-panel-dark">
+          <h2 className="mb-2 font-sans text-lg font-bold text-ink dark:text-white">Export</h2>
           <p className="font-serif text-sm leading-relaxed text-slatewarm dark:text-slate-400">
-            Once phase is <strong>Complete</strong>, use the session page action to download a PDF
+            Once all rounds are <strong>Complete</strong>, a session page action button (export) will appear to download a PDF
             of the final findings document.
           </p>
         </article>
