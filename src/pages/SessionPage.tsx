@@ -457,18 +457,21 @@ function ErrorSnackbar({
 }
 
 /**
- * Model-level refusal or provider rejection is already represented inline in chat.
+ * Model-level refusal or provider rejection is already represented inline in the
+ * relevant UI for that phase.
  * Keep the snackbar for session-level failures that require broader user attention.
  */
 function shouldSuppressInlineModelRefusalError(message: string, phase: string): boolean {
   const normalized = message.toLowerCase();
-  const isDiscussionTurnFailure = phase === "running" && normalized.includes("model call failed for ");
+  const isModelScopedFailure =
+    (phase === "running" || phase === "voting") &&
+    normalized.includes("model call failed for ");
   const isProviderRefusalLike =
     normalized.includes("openrouter stream failed") ||
     normalized.includes("provider returned error") ||
     normalized.includes("refused to take part");
 
-  return isDiscussionTurnFailure && isProviderRefusalLike;
+  return isModelScopedFailure && isProviderRefusalLike;
 }
 
 /**
