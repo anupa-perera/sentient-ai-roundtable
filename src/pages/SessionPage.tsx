@@ -93,6 +93,10 @@ export function SessionPage(): JSX.Element {
     if (!error) {
       return;
     }
+    if (shouldSuppressInlineModelRefusalError(error, phase)) {
+      setError(null);
+      return;
+    }
     setSnackbarMessage(error);
     setIsSnackbarVisible(true);
 
@@ -108,7 +112,7 @@ export function SessionPage(): JSX.Element {
       window.clearTimeout(hideTimer);
       window.clearTimeout(clearTimer);
     };
-  }, [error, setError]);
+  }, [error, phase, setError]);
 
   if (!effectiveSessionId) {
     return (
@@ -450,6 +454,21 @@ function ErrorSnackbar({
       </div>
     </div>
   );
+}
+
+/**
+ * Model-level refusal or provider rejection is already represented inline in chat.
+ * Keep the snackbar for session-level failures that require broader user attention.
+ */
+function shouldSuppressInlineModelRefusalError(message: string, phase: string): boolean {
+  const normalized = message.toLowerCase();
+  const isDiscussionTurnFailure = phase === "running" && normalized.includes("model call failed for ");
+  const isProviderRefusalLike =
+    normalized.includes("openrouter stream failed") ||
+    normalized.includes("provider returned error") ||
+    normalized.includes("refused to take part");
+
+  return isDiscussionTurnFailure && isProviderRefusalLike;
 }
 
 /**
